@@ -3,7 +3,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/selvasingh/spring-microservices-performance-config.git
+          uri: https://github.com/mnriem/spring-microservices-performance-config.git
         native:
           search-locations: classpath:.
   profiles:
