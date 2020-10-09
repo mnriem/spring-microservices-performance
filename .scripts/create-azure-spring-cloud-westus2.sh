@@ -40,6 +40,13 @@ az spring-cloud app create --name greeting-service --instance-count 1 \
     --resource-group ${RESOURCE_GROUP} \
     --service ${SPRING_CLOUD_SERVICE_01}
 
+# ==== Create the greeting-service-netty app ====
+az spring-cloud app create --name greeting-service-netty --instance-count 1 \
+    --memory 2 \
+    --jvm-options='-Xms2048m -Xmx2048m -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:+UseG1GC -Djava.awt.headless=true' \
+    --resource-group ${RESOURCE_GROUP} \
+    --service ${SPRING_CLOUD_SERVICE_01}
+
 # ==== Build for cloud ====
 mvn clean package -DskipTests -Denv=cloud
 
@@ -54,8 +61,8 @@ az spring-cloud app deploy --name greeting-service \
     --resource-group ${RESOURCE_GROUP} \
     --service ${SPRING_CLOUD_SERVICE_01}
 
-# ==== Scale apps ====
-az spring-cloud app scale --name gateway --instance-count 8 \
+az spring-cloud app deploy --name greeting-service-netty \
+    --jar-path ${GREETING_SERVICE_NETTY_JAR} \
     --resource-group ${RESOURCE_GROUP} \
     --service ${SPRING_CLOUD_SERVICE_01}
 
@@ -63,3 +70,6 @@ az spring-cloud app scale --name greeting-service --instance-count 8 \
     --resource-group ${RESOURCE_GROUP} \
     --service ${SPRING_CLOUD_SERVICE_01}
 
+az spring-cloud app scale --name greeting-service --instance-count 8 \
+    --resource-group ${RESOURCE_GROUP} \
+    --service ${SPRING_CLOUD_SERVICE_01}

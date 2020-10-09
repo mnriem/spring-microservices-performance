@@ -10,4 +10,5 @@ export SPRING_CLOUD_SERVICE_02=spring-ms-perf-westus2-05-2020-2
 
 # ==== JARS ====
 export GREETING_SERVICE_JAR=greeting-service/target/greeting-service-1.0.0.jar
+export GREETING_SERVICE_NETTY_JAR=greeting-service-netty/target/greeting-service-netty-1.0.0.jar
 export GATEWAY_JAR=gateway/target/gateway-1.0.0.jar

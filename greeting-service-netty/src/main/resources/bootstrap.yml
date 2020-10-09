@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: greeting-service-netty
+  cloud:
+    config:
+      uri: ${CONFIG_SERVER_URI}
+
+---
+
+spring:
+  profiles: development
+  cloud:
+    config:
+      fail-fast: true

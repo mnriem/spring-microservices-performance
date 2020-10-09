@@ -68,6 +68,7 @@
 		<module>config-server</module>
 		<module>service-registry</module>
 		<module>greeting-service</module>
+		<module>greeting-service-netty</module>
 		<module>gateway</module>
 	</modules>
 
